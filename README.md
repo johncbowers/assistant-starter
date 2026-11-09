@@ -31,7 +31,7 @@ with every change saved in git.
 1. **Copy the kit to your Mac.** In Terminal:
 
    ```bash
-   git clone <URL of this repo> ~/Documents/Assistant
+   git clone https://github.com/johncbowers/assistant-starter.git ~/Documents/Assistant
    ```
 
    (Or download the ZIP and unzip it to `~/Documents/Assistant`.) Don't use
