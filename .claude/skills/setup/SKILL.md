@@ -57,6 +57,17 @@ time, and follow up on anything vague. Cover:
    - **Where the backup goes** (step 4).
 6. Personal life too? Some people track family, home and appointments here
    as well; if yes, those items get a `Personal:` label.
+7. **How they're evaluated.** Say why you're asking: "Most people write
+   their review from memory and forget half of what they did. I can keep
+   the record as we go." Then ask: Is there an annual review, self-
+   evaluation, activity report, promotion case or OKRs? What period does it
+   cover, and when is it due? Does the form have categories or criteria
+   (ask them to paste the headings, or the whole form, if they have it)?
+   Who reads it? Any goals set at the last review? Anything beyond the
+   review itself worth tracking (a license's CE hours, billable hours,
+   training required each year, a portfolio)? No formal review (new job,
+   freelance)? Recommend the log anyway, with generic categories: it pays
+   off in job applications and raise conversations.
 
 Don't ask for anything you won't use. Keep notes in your head until step 5.
 
@@ -146,6 +157,16 @@ backup <URL>`.
 - `people.md`: ask for a few people they deal with often (manager, close
   colleagues, key contacts), with roles and email addresses. Never
   confidential people.
+- `accomplishments/` (unless they declined it in step 2.7): create
+  `criteria.md` from the `accomplishments` skill's template with what they
+  told you (categories in the form's own words; the generic ones if none),
+  and the current period's file with a `# <period>` heading. Add the review
+  to `recurring.md` as an obligation: due date, and a lead time of 2 weeks
+  ("draft the write-up with `/accomplishments`"). Other things they track
+  for evaluation (CE hours, required training) go in as categories with a
+  target ("CE hours — 30 by 2027-03-31"). Then ask: "What have you done
+  since your last review that you'd want in it?" and log each one. Record
+  the period and due date under **Options** in CLAUDE.md.
 - `now.md`: ask "What's on your plate this week and next?" and file each
   with the `capture` skill. This is the moment it starts being useful.
 
@@ -153,6 +174,9 @@ backup <URL>`.
 One AskUserQuestion, multiSelect, "Which of these do you want?":
 - **Morning brief + Friday review** (scheduled, runs on this Mac)
 - **Phone capture** (iPhone shortcut that drops notes into the assistant)
+- **Apple Calendar & Reminders sync** (Mac only: tasks show up in
+  Reminders, appointments on an Assistant calendar, and the brief reads
+  your real calendars)
 
 **Morning brief + Friday review:** if this session has the scheduled-tasks
 tool, create two local tasks in this folder:
@@ -177,6 +201,47 @@ If the Mac is asleep at the scheduled time, the task runs when it wakes.
 Have them send a test line; check
 `~/Library/Mobile Documents/iCloud~is~workflow~my~workflows/Documents/phone-inbox.md`
 (it can take a minute to sync), file it, and empty the file (rule 1).
+
+**Apple Calendar & Reminders sync:** first tell them what it means, in
+plain words (the README's **Apple Calendar & Reminders sync** section has
+the details; point them to it):
+- macOS will ask to give a small helper app full access to Calendars and
+  Reminders. It only changes its own "Assistant" calendar and list, but it
+  can read all of them.
+- The brief will read every calendar on this Mac, including work calendars
+  added to the Calendar app, and Claude sees those event titles. Calendars
+  they name can be skipped or shown only as "Appointment".
+- The Assistant calendar and list go to iCloud, so they reach the phone.
+- Change things in the files or by telling the assistant; in Reminders,
+  only tick things off (other edits there get overwritten).
+Then ask again whether they want it. If yes:
+1. `uname -s` must say `Darwin`; otherwise stop: this part is Mac only.
+2. `xcode-select -p`. Fails → they need Apple's command line tools: have
+   them run `xcode-select --install` themselves and click through the
+   installer (a few minutes), then retry.
+3. `scripts/apple/build.sh`. It builds `scripts/apple/AssistantSync.app`
+   (git-ignored; rebuild after macOS updates if it stops working).
+4. Ask whether someone else (a partner, an assistant, a manager) should be
+   able to hand them tasks through a shared Reminders list. If yes: its
+   name, and a short label for items from it (e.g. `from Sam`). They
+   create the list in Reminders and share it themselves.
+5. Write `sync/config.json` (`calendar` and `list` stay "Assistant" unless
+   they want other names; `shared_list` and `shared_label` from step 4, or
+   empty). Run `python3 -I scripts/apple_sync.py sync` while they watch:
+   macOS asks for Calendars and Reminders access for "Assistant Sync";
+   they click **Allow** for both. Denied by mistake → System Settings ›
+   Privacy & Security › Calendars / Reminders, turn on Assistant Sync, run
+   again. If the command is refused by the sandbox, run it outside the
+   sandbox.
+6. List their calendars: `python3 -I scripts/apple_sync.py agenda <today>
+   <today+30>` and collect the `[calendar]` names (show names only, not
+   events). Ask which to skip entirely (holidays, birthdays, other people's
+   shared calendars) and which to show only as "Appointment" (any whose
+   event titles name confidential people, rule 4). Put them in `skip` and
+   `anonymize` in `sync/config.json`.
+7. Check: the Assistant list in Reminders shows their open tasks; the
+   Assistant calendar shows `events.md` appointments. Record it under
+   **Options** in CLAUDE.md.
 
 ## 7. Finish
 1. Commit everything (`setup: <first name>`). Backup chosen →

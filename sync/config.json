@@ -1,0 +1,8 @@
+{
+  "calendar": "Assistant",
+  "list": "Assistant",
+  "shared_list": "",
+  "shared_label": "",
+  "anonymize": [],
+  "skip": ["Birthdays", "US Holidays", "United States holidays"]
+}

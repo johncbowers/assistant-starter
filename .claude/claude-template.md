@@ -29,7 +29,9 @@ Claude approved for work by the employer: <yes | not required | unknown — chec
 - Backup remote: <`backup` = <URL> (<GitHub private | organization server>) | none (local only)>
 - Messages: <talking points + a blank email (default) | full drafts in the user's voice>
 - Mail app: <gmail | outlook-web | mac> (`scripts/compose.sh`)
+- Accomplishments log: <yes: <review type>, period <…>, due <…> (`accomplishments/`) | no>
 - Phone inbox: <yes (iPhone "Capture" shortcut) | no>
+- Apple sync: <yes: calendar "<name>", Reminders list "<name>"<, shared list "<name>" (items labeled `(<label>)`)>; settings in `sync/config.json` | no>
 - Morning brief + Friday review: <scheduled | on request>
 - Starter kit: <URL the folder was cloned from>, last updated <YYYY-MM-DD>
 

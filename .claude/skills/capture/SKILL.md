@@ -18,7 +18,9 @@ description: Record something new the user reports — an email they got, a requ
    - Appointment with a date and time (meeting, call, trip) → `events.md`
      in its format (`Personal:` label too, if it's personal). If it also
      means work beforehand (RSVP, prepare slides), that task goes in
-     `now.md` too.
+     `now.md` too. With Apple sync on, check the user's calendars first
+     (`python3 -I scripts/apple_sync.py agenda <date>`): if it's already
+     there, don't add it to `events.md`; just say so.
    - Task or deadline → `now.md`, in **Due this week** if due within 7 days,
      else **Coming up**: `- [ ] item — due YYYY-MM-DD (added YYYY-MM-DD)`.
      Personal items (if the user tracks them here) start with `Personal:`.
@@ -35,6 +37,11 @@ description: Record something new the user reports — an email they got, a requ
      the date added; the next brief asks about it.
    - **Also, people:** a new colleague or contact with a role → add or update
      their line in `people.md`. Never confidential people.
+   - **Also, accomplishments** (if `accomplishments/` exists): anything that
+     would belong in their review (a result delivered, a talk or training,
+     a launch, praise, an award, a goal reached, a new responsibility) →
+     add an entry per the `accomplishments` skill, with a guessed category.
+     Say which category in the confirmation. Don't ask first.
 4. If the same item already exists, update that line instead of adding a new
    one.
 5. If the item means the user owes someone a reply, **offer** to prepare it
@@ -43,5 +50,8 @@ description: Record something new the user reports — an email they got, a requ
    mention once that a skill could handle it (`suggest-skills`).
 7. **Confirm** in one short line what you filed and where. Commit if this is
    a git repo (rule 7).
+8. **Apple sync** (if CLAUDE.md says it's on): after filing, run
+   `python3 -I scripts/apple_sync.py sync` so Calendar and Reminders match,
+   and mention anything new it brought in.
 
 Several items in one message: file each one, then confirm them together.

@@ -16,12 +16,19 @@ This may be an unattended run. Don't ask questions; anything that needs the
 user's input goes under **Needs a decision**.
 
 ## Steps
-1. **Triage the inboxes.** The phone inbox (if CLAUDE.md has one), then
+1. **Triage the inboxes.** If Apple sync is on (CLAUDE.md), first run
+   `python3 -I scripts/apple_sync.py sync`: it brings in items from the
+   shared list and ticks off what was done in Reminders. Then the phone
+   inbox (if CLAUDE.md has one), then
    `inbox.md`. File each line using the `capture` skill's rules and delete it
    from its inbox. Anything you can't place goes to `now.md` **Unsorted**.
 2. **Read** `now.md`, `events.md` and `recurring.md`.
    - **Events:** today's go at the top of **Today**, one line each with
-     times. Point out a clash with a deadline, or a packed day this week.
+     times. With Apple sync on, use the user's real calendars instead:
+     `python3 -I scripts/apple_sync.py agenda <today> <today+6>` (it
+     includes `events.md`, which the sync put on the Assistant calendar).
+     Calendar titles follow rule 4. Point out a clash with a deadline, or
+     a packed day this week.
    - **Recurring:** work out each obligation's next date and, from its lead
      time, the date to start. Start date or due date within 5 working days
      → **This week** (or **Today**), saying which ("start today: quarterly
@@ -67,4 +74,6 @@ user's input goes under **Needs a decision**.
    `~/Library/Mobile Documents/com~apple~CloudDocs/Assistant/brief.md`
    (iCloud Drive › Assistant; create the folder if missing), replacing the
    previous day's. It's outside git.
-7. Commit (`brief: YYYY-MM-DD`) and push if there's a backup (rule 7).
+7. If anything changed in `now.md` or `events.md` during the brief and
+   Apple sync is on, run the sync again. Commit (`brief: YYYY-MM-DD`) and
+   push if there's a backup (rule 7).

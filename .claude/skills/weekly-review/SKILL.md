@@ -25,13 +25,19 @@ description: Friday weekly review — archive finished items, keep now.md within
    date has passed → mark them done in the tracker the way the skill says (or
    move them under a **Past** heading). List each skill's steps due in the
    next 10 working days.
-6. **Look ahead.** Everything due in the next 10 working days, by date,
+6. **Accomplishments** (if `accomplishments/` exists): count entries with
+   `status: guess` and mention them in one line under **Needs a decision**
+   ("4 review entries to confirm: `/accomplishments`"). No new entry in the
+   last 3 weeks → one line: "Anything from the last few weeks worth
+   recording for your review?"
+7. **Look ahead.** Everything due in the next 10 working days, by date,
    including recurring obligations and events.
-7. **Patterns.** If the same kind of item came in three or more times this
+8. **Patterns.** If the same kind of item came in three or more times this
    week and no skill covers it, add one line under **Needs a decision**:
    "Might be worth a skill: <what> (`/suggest-skills`)." At most one per
    review.
-8. **Write** the review to `briefs/YYYY-MM-DD-review.md` with sections:
+9. **Write** the review to `briefs/YYYY-MM-DD-review.md` with sections:
    **Done this week**, **Look ahead**, **Stale?**, **Needs a decision**.
    Leave out empty sections. Print it in the session too.
-9. Commit (`review: YYYY-MM-DD`) and push if there's a backup (rule 7).
+10. If Apple sync is on, run `python3 -I scripts/apple_sync.py sync`.
+   Commit (`review: YYYY-MM-DD`) and push if there's a backup (rule 7).

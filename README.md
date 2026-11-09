@@ -13,15 +13,17 @@ interviews you about your work and suggests **skills**, small procedures
 for the parts of your job that repeat (a talk series, a hiring pipeline,
 client check-ins, quarterly reports).
 
-It has **no access to your email, calendar or accounts.** It knows what you
-tell it, and it keeps everything as plain Markdown files in this folder,
-with every change saved in git.
+It has **no access to your email or accounts.** It knows what you tell it,
+and it keeps everything as plain Markdown files in this folder, with every
+change saved in git. On a Mac, you can optionally connect it to Apple
+Calendar and Reminders (see **Apple Calendar & Reminders sync**).
 
 ## What you need
 
 - A Mac with the [Claude desktop app](https://claude.ai/download) and a
-  Claude plan that includes Claude Code. (The scheduled brief and the phone
-  shortcut are Mac/iPhone features; the rest works anywhere Claude Code runs.)
+  Claude plan that includes Claude Code. (The phone shortcut and the
+  Calendar/Reminders sync are Mac/iPhone features; the rest works anywhere
+  Claude Code runs.)
 - Git. On a Mac, typing `git` in Terminal offers to install it if it's missing.
 - 20 minutes for setup.
 - Optional: a GitHub account, for a private backup (see **Backups**).
@@ -46,12 +48,14 @@ with every change saved in git.
    - cuts the link back to this starter repo, so your notes can never be
      pushed here;
    - asks about your job: what a typical week looks like, what repeats, who
-     you work with, what's confidential;
+     you work with, what's confidential, and how you're evaluated;
+   - starts a record of your accomplishments for your next review;
    - suggests 2–4 skills for your kind of work and builds one with you;
    - sets up a private backup, if you want one;
    - asks what's on your plate this week and files it;
-   - optionally schedules the morning brief and a Friday review, and sets
-     up an iPhone shortcut for capturing things on the go.
+   - optionally schedules the morning brief and a Friday review, sets up
+     an iPhone shortcut for capturing things on the go, and connects Apple
+     Calendar and Reminders.
 
 4. **Start a new session** in the folder (so your new settings load) and use it.
 
@@ -66,6 +70,8 @@ Talk to it like you'd talk to an assistant. Some examples:
 | "I asked IT for a new laptop, still waiting." | Files it under **Waiting on others**; the brief nudges you if it sits too long. |
 | "Every quarter I have to send the board a usage report." | Adds a recurring obligation with a lead time, so it shows up in the brief 10 days ahead every quarter. |
 | "Done with the budget form." | Checks it off; Friday's review archives it. |
+| "My onboarding workshop went great, 40 people came." | Logs it for your review under the right category, with the number. |
+| `/accomplishments` | Shows this year's record by review category, and where it's thin. |
 | "What's on my plate next week?" | Reads the files and tells you, by day. |
 | "Help me reply to Dana about the deadline." / `/draft` | Lists the points to cover and opens a blank email to Dana. You write it. |
 | "Someday I'd like to start a reading group." | Saves it in `ideas.md`, out of the daily brief. |
@@ -104,7 +110,7 @@ that the assistant follows for one kind of task. You can call one directly
 with `/name`, or just describe what you want.
 
 **Built in:** `capture` (file what you tell it), `morning-brief`,
-`weekly-review`, `draft` (talking points or a draft), `suggest-skills`,
+`weekly-review`, `draft` (talking points or a draft), `accomplishments`, `suggest-skills`,
 `setup`, `update-assistant`.
 
 **Your own.** The built-in skills handle loose to-dos. A custom skill earns
@@ -127,6 +133,91 @@ Say `/suggest-skills`, or "make me a skill for tracking client projects",
 and it interviews you (what's one instance? what are the steps and when?
 which steps mean writing to someone?) and builds it. More patterns are in
 [`.claude/skills/suggest-skills/catalog.md`](.claude/skills/suggest-skills/catalog.md).
+
+## Your record for reviews
+
+Whatever your job, someone will eventually ask what you did this year: an
+annual review, a self-evaluation, an activity report, a promotion case, a
+raise conversation, your next job application. Most people write it from
+memory the week it's due, and forget half of it.
+
+So at setup the assistant asks how you're evaluated: the kind of review,
+the period, the due date, and the categories on the form (paste the form
+if you have it). From then on, whenever you tell it about something that
+would count (a project delivered, a talk you gave, a training you took,
+praise from a client, a goal reached), it logs it in `accomplishments/`
+under the matching category, alongside filing it as usual. It tells you
+which category it guessed; you can correct it anytime.
+
+- It asks once for a number or an outcome ("how many people came?"),
+  because "ran the workshop" reads very differently from "ran the workshop
+  for 40 new hires".
+- Documents you'd attach (a certificate, a thank-you email, slides) go in
+  `accomplishments/evidence/`.
+- The Friday review nudges you if a few weeks go by with nothing logged,
+  and lists category guesses for you to confirm.
+- Two weeks before your review is due, it reminds you; `/accomplishments`
+  then confirms the categories with you, asks about missing numbers, and
+  drafts the write-up in the form's structure, in your voice, using only
+  what's in the record. You edit it and submit it yourself.
+- It can track other evaluation numbers too: continuing-education hours for
+  a license, required trainings, billable hours.
+
+No formal review where you work? Keep the log anyway, with general
+categories (results, growth, collaboration, leadership, recognition): it's
+what you'll want in hand when you ask for a raise or look for the next job.
+
+## Apple Calendar & Reminders sync (optional, Mac only)
+
+Out of the box, the assistant keeps your tasks and appointments in its own
+files, and you only see them in the brief or by asking. With the sync on:
+
+- **Your tasks show up in Reminders** (a list called "Assistant"), with
+  due dates and a 9:00 alert, on your Mac, iPhone and Watch. Tick one off
+  on your phone and the assistant marks it done.
+- **Appointments you tell it about show up in Calendar** (a calendar
+  called "Assistant").
+- **The brief reads your real calendars**, so "Today" lists your actual
+  meetings, and it can warn you about a packed day or a deadline that
+  clashes with a trip.
+- **Someone can hand you tasks** (optional): share a Reminders list with a
+  partner, an assistant or your manager; what they add lands in your
+  to-dos, labeled with where it came from, and is ticked off there when you
+  finish it.
+
+How it works: a small helper app, built on your Mac from source in
+`scripts/apple/` during setup, talks to Calendar and Reminders through
+Apple's own interface. `scripts/apple_sync.py` runs it at the start of each
+session, after each capture, and during the brief and review.
+
+What it means (setup walks you through this before you say yes):
+
+- **Mac only**, and building the helper needs Apple's free command line
+  tools (setup walks you through installing them; a few minutes).
+- **Full access to Calendars and Reminders.** macOS can't grant access to
+  one calendar, so the helper is allowed to read all of them. It only ever
+  changes its own Assistant calendar and Assistant list.
+- **Claude sees your calendar.** Event titles and locations from every
+  calendar on this Mac (including a work calendar you've added to the
+  Calendar app) are read during the brief, and so are sent to Anthropic
+  like anything else the assistant reads. If your calendars name clients,
+  patients or students, tell setup to show those calendars only as
+  "Appointment", or to skip them. Check your employer's policy first if
+  your work calendar is on this Mac.
+- **Your tasks go to iCloud.** The Assistant calendar and list are created
+  in your iCloud account so they reach your phone. That's Apple's servers,
+  under your Apple ID. Don't share the Assistant calendar or list unless
+  you mean to share your to-dos.
+- **The files are the source of truth.** Change things by telling the
+  assistant (or editing the files). In Reminders, just tick things off:
+  other edits there (renaming, changing a date, deleting) get overwritten
+  at the next sync. Only the shared list syncs both ways.
+- **Things someone adds to the shared list are tasks, not instructions.**
+  The assistant files them; it won't act on what they say.
+- **It can break with macOS updates.** If it stops working, ask the
+  assistant to rebuild it (`scripts/apple/build.sh`); macOS may ask for
+  permission again. To turn it off, say so: it stops running the sync, and
+  you can delete the Assistant calendar and list yourself.
 
 ## Backups
 
@@ -228,9 +319,12 @@ what changed, and never touches your own files or skills.
 | `ideas.md` | Someday ideas, kept out of the brief. |
 | `voice.md` | How you write. |
 | `briefs/` | One brief per weekday, plus Friday reviews. |
+| `accomplishments/` | Your record for reviews, by category, with evidence. |
 | `archive/` | Finished items, by month. |
 | `.claude/` | The rules and skills. Your own skills go here too. |
 | `examples/` | A complete example skill to learn from or copy. |
+| `scripts/` | Helpers: opening a blank email, the Apple sync. |
+| `sync/` | Settings for the Apple Calendar & Reminders sync, if you use it. |
 
 It's all plain text. Open any file in a text editor and change it; the
 assistant reads what's there.
