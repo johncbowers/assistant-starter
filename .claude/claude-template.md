@@ -18,14 +18,17 @@ specific to this user; edit it freely.
 ## Confidential
 
 Never write names or details of these into any file (rule 4):
-- <e.g. students (FERPA) | patients | clients under NDA | job candidates | employees' HR matters>
+- People: <e.g. students (FERPA) | patients (HIPAA) | clients under NDA | job candidates>
+- Information that makes anyone confidential: <e.g. HR or performance matters | background checks | health>
 Labels to use instead: <e.g. "Client A", "candidate #3">
+Never typed here at all (employer policy): <e.g. patient health information | none known>
+Claude approved for work by the employer: <yes | not required | unknown — check>
 
 ## Options
 
 - Backup remote: <`backup` = <URL> (<GitHub private | organization server>) | none (local only)>
 - Messages: <talking points + a blank email (default) | full drafts in the user's voice>
-- Mail app: <the Mac's default mail app | ask the user> (`scripts/compose.sh`)
+- Mail app: <gmail | outlook-web | mac> (`scripts/compose.sh`)
 - Phone inbox: <yes (iPhone "Capture" shortcut) | no>
 - Morning brief + Friday review: <scheduled | on request>
 - Starter kit: <URL the folder was cloned from>, last updated <YYYY-MM-DD>

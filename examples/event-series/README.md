@@ -12,8 +12,8 @@ a weekly research seminar. It shows the pattern `suggest-skills` builds:
 How it pays off in practice:
 - "Sam sent his title and abstract" → the row gets `✓`s and the text goes
   under **Details**, verbatim.
-- The morning brief, three weeks before a talk: "Talks: ask Priya
-  Natarajan for title/abstract/bio (talk 2026-12-04)."
+- The morning brief, three weeks before a talk: "Talks: ask Lee
+  Okafor for title/abstract/bio (talk 2026-12-04)."
 - A week out: "Talks: announcement due today; bio still missing." Ask for it
   and the assistant fills the announcement template from the tracker,
   leaving `[BIO — verbatim]` blank rather than inventing one.

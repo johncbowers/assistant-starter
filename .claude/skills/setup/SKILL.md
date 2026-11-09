@@ -38,11 +38,23 @@ time, and follow up on anything vague. Cover:
    Slack/Teams, phone).
 5. **Confidentiality:** which of those people are confidential by law,
    contract or common sense (students under FERPA, patients under HIPAA,
-   clients under NDA, candidates, HR matters). Explain rule 4: those people
-   never get named in these files; you'll use labels like "Client A".
+   clients under NDA, candidates), and which kinds of information make
+   anyone confidential (HR or performance matters, background checks,
+   health). Explain rule 4: those people never get named in these files;
+   you'll use labels like "Client A".
    Ask whether their employer has a policy on AI tools or on where work
-   information may be stored; if they don't know, suggest they find out
-   (it affects the backup choice in step 4).
+   information may be stored; if they don't know, suggest they find out.
+   It matters twice:
+   - **What they type.** Rule 4 keeps names out of files, but Claude still
+     reads whatever they type. If a policy restricts some information in AI
+     tools (patient health information, client data, anything classified),
+     say plainly: never type it here at all; describe the work instead
+     ("follow-up call for a patient, Friday"). If their employer only allows
+     approved AI tools, ask whether this Claude account is one (a personal
+     plan may not be); if not, suggest they check before using it for work,
+     and track only personal items until then. Record it under
+     **Confidential** in CLAUDE.md.
+   - **Where the backup goes** (step 4).
 6. Personal life too? Some people track family, home and appointments here
    as well; if yes, those items get a `Personal:` label.
 
@@ -53,7 +65,8 @@ Follow the `suggest-skills` skill with what you learned in step 2: propose
 2–4 skills that fit their work, and offer to build **one** now (the one
 they'd use most this month). Note the others under **Skill ideas** in
 `ideas.md` so they aren't lost; they can build any of them later with
-`/suggest-skills`.
+`/suggest-skills`. During setup, skip suggest-skills' **Finally** steps 1
+and 3 (CLAUDE.md, commit, new session): steps 5 and 7 below do them.
 
 ## 4. Backup
 Explain in two or three sentences: git history lives only on this Mac until
@@ -68,8 +81,9 @@ AskUserQuestion: "Where should this folder be backed up?"
   a university server over SSH); stays inside the organization.
 - **Local only for now** — nothing leaves this Mac; you can add a backup later.
 
-If their employer restricts where work data may go, recommend the
-organization option or local only, not GitHub.
+If their employer restricts where work data may go, list the organization
+option first with "(Recommended)" (or local only if they have no
+organization server), put GitHub last, and say why in one line.
 
 **GitHub:**
 1. `gh --version`. Missing → they can install it (`brew install gh`, or
@@ -115,13 +129,20 @@ backup <URL>`.
   list what to cover and open an email to the right person; they write it
   in their own words. **Full drafts in my voice**: you write it, they edit
   and send. Record it in **Options**.
+- **Mail app:** AskUserQuestion: "Which email do you use for work?" —
+  **Gmail in the browser**, **Outlook in the browser**, **A Mac mail app**
+  (Apple Mail or desktop Outlook, set as the default). Record it in
+  **Options** as `gmail`, `outlook-web` or `mac`; the `draft` skill passes
+  it to `scripts/compose.sh`.
 - `voice.md`: if they chose full drafts, ask them to paste 2–3 short emails
-  they wrote (nothing confidential); fill greeting, sign-off and tone, keep
-  the examples verbatim. Otherwise just ask for their usual sign-off.
+  they wrote (nothing confidential); one is fine, and they can add more
+  later. Fill greeting, sign-off and tone, keep the examples verbatim.
+  Otherwise just ask for their usual sign-off.
 - `recurring.md`: add the cycles from step 2 as obligations with lead times
   ("Quarterly report — last business day of Mar/Jun/Sep/Dec — start 10 days
-  before"). Add the key dates of their year to **Calendar** if they know
-  them; else `?` (the brief asks later).
+  before"), except cycles a skill from step 3 already tracks. Add the key
+  dates of their year to **Calendar** if they know them; else `?` (the
+  brief asks later).
 - `people.md`: ask for a few people they deal with often (manager, close
   colleagues, key contacts), with roles and email addresses. Never
   confidential people.
@@ -141,10 +162,11 @@ tool, create two local tasks in this folder:
 - "Weekly review", Fridays 13:00 (`0 13 * * 5`): same, with
   `.claude/skills/weekly-review/SKILL.md`.
 Ask whether those times suit them first. Without the tool, give them the two
-prompts to paste on the app's Scheduled page. Tell them: click **Run now**
-once while watching and choose **always allow** for file edits and git, so
-unattended runs don't stall; if the Mac is asleep at the scheduled time, the
-task runs when it wakes.
+prompts to paste on the app's Scheduled page. Then, in plain words: "Open
+the Morning brief task and click **Run now** while you watch. The first
+time, it will ask permission to change files and save its work; choose
+**Always allow** each time, so the 7:30 run doesn't sit waiting for you."
+If the Mac is asleep at the scheduled time, the task runs when it wakes.
 
 **Phone capture:** walk them through it on the iPhone:
 1. Shortcuts app → **+** → name it **Capture**.

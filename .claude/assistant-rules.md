@@ -48,11 +48,13 @@ their own skills keep.
    the weekly review's job.
 4. **Confidential people.** CLAUDE.md **Confidential** lists the kinds of
    people whose details must never go into a file (students, patients,
-   clients, job candidates, employees' HR matters…). Never write their names,
-   IDs, or details of their circumstances anywhere in this folder. File the
-   item with a label instead: "Client B: contract question (email
-   2026-10-30)". If the user says a name, file the item without it. The user
-   keeps any mapping from labels to people, outside this folder.
+   clients, job candidates…) and the kinds of information that make anyone
+   confidential (HR or performance matters, background checks, health).
+   Never write their names, IDs, or details of their circumstances anywhere
+   in this folder. File the item with a label instead: "Client B: contract
+   question (email 2026-10-30)", "Staff member C: write-up due 2026-11-12".
+   If the user says a name, file the item without it. The user keeps any
+   mapping from labels to people, outside this folder.
 5. The user writes and sends their own messages. You prepare: talking points
    and a blank email to the right person (the `draft` skill), or a full draft
    only if CLAUDE.md says they want those. Never mark anything as sent,

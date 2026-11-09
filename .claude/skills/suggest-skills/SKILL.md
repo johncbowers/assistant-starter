@@ -41,7 +41,9 @@ Interview first, then write. Ask in chat, a few questions at a time:
 2. **The steps.** What happens for each instance, in order, and how long
    before (or after) its key date? These become lead-time rules ("Ask for
    materials: 21 days before"). If they don't know, propose defaults and
-   label them as defaults they can change.
+   label them as defaults they can change. Fixed schedule ("third
+   Wednesday of every month")? Put it in **Rules**, and have **What's due**
+   add a row for each upcoming instance in the next 8 weeks.
 3. **The messages.** Which steps mean writing to someone? For each, what
    must the message cover? These become checklist templates, not scripts:
    the user writes their own words (rule 5) unless CLAUDE.md says full drafts.

@@ -84,8 +84,8 @@ Capture shortcut); the next brief files it.
 - OVERDUE 2 days: expense report for the October trip
 - Due today: send slides to Dana
 
-## Talks
-- Ask Priya for title/abstract/bio (talk 2026-12-04)
+## Talks  (from a custom skill; see Skills below)
+- Ask Lee Okafor for title/abstract/bio (talk 2026-12-04)
 
 ## This week
 - Thu 11-12: quarterly usage report to the board (start today)
@@ -189,10 +189,16 @@ replace the `backup` remote and push the full history to the new place.
 - **What Claude sees.** When the assistant works, Claude reads the files it
   needs, and that text is sent to Anthropic to be processed, like anything
   else you type to Claude. If your employer has an AI policy, it applies
-  here.
+  here. Some jobs (healthcare, legal, government) forbid putting certain
+  information into AI tools at all, or allow only tools the employer has
+  approved. Setup asks; if that's you, keep that information out of what
+  you type, not just out of the files ("follow-up call for a patient,
+  Friday", not the patient's name and medication), and check that your
+  Claude account is approved before using it for work.
 - **Confidential people.** At setup you name the kinds of people whose
   details are protected in your work: students (FERPA), patients (HIPAA),
-  clients under NDA, job candidates, employees' HR matters. The assistant
+  clients under NDA, job candidates; and the kinds of information that
+  make anyone confidential (HR matters, background checks). The assistant
   never writes their names or details into any file; it uses labels like
   "Client B: contract question (email 2026-10-30)". You keep the mapping
   yourself, somewhere else.

@@ -31,8 +31,11 @@ none of this is a default to impose.
 - `advising` (people rhythm): meetings with advisees, by label.
 
 **Manager or team lead**
-- `one-on-ones` (people rhythm): each report, cadence, topics to raise next
-  time, last meeting. HR matters stay out of the files.
+- `one-on-ones` (people rhythm): each report, cadence, work topics to raise
+  next time, last meeting. Performance, HR, health and leave never go in
+  the files, not even under a label: a per-person notes file drifts that
+  way, so say so in the skill. If that's the main thing they'd track,
+  label the people (rule 4) and keep it to dates and work topics.
 - `hiring` (pipeline): candidates by label, stage, interviewers, next step.
 - `reports` (deadline cycle): weekly/monthly/quarterly reports and who gets them.
 

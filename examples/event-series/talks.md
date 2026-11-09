@@ -16,7 +16,7 @@
 | Date | Speaker | Affiliation | Host | Title | Abstract | Bio | Room | Asked | Announced | Reminder | Notes |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 2026-11-20 | Sam Ortiz | Example University | user | ✓ | ✓ | — | ✓ | ✓ | — | — | bio requested again 2026-11-06 |
-| 2026-12-04 | Priya Natarajan | Example Labs | user | — | — | — | — | — | — | — | |
+| 2026-12-04 | Lee Okafor | Example Labs | user | — | — | — | — | — | — | — | |
 
 <!-- ✓ = done/received, — = not yet, n/a = not needed. -->
 

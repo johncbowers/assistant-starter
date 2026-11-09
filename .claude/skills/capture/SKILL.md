@@ -9,25 +9,30 @@ description: Record something new the user reports — an email they got, a requ
    clearly needs a due date and none was given, ask once. If the user doesn't
    know, file it without one.
 2. **Strip confidential details** (rule 4, CLAUDE.md **Confidential**) before
-   writing anything.
+   writing anything. If the user typed something CLAUDE.md says should
+   never be typed here (employer policy), file the item without it and
+   remind them once per session, in one line, to leave such details out.
 3. **File it** in exactly one place:
    - Covered by one of the user's own skills (CLAUDE.md **More
      procedures**) → follow that skill (usually a row in its tracker).
    - Appointment with a date and time (meeting, call, trip) → `events.md`
-     in its format. If it also means work beforehand (RSVP, prepare
-     slides), that task goes in `now.md` too.
+     in its format (`Personal:` label too, if it's personal). If it also
+     means work beforehand (RSVP, prepare slides), that task goes in
+     `now.md` too.
    - Task or deadline → `now.md`, in **Due this week** if due within 7 days,
      else **Coming up**: `- [ ] item — due YYYY-MM-DD (added YYYY-MM-DD)`.
      Personal items (if the user tracks them here) start with `Personal:`.
    - Waiting on someone → `now.md` **Waiting on others**:
      `- [ ] what — from whom — waiting since YYYY-MM-DD`.
    - New standing obligation ("every quarter I have to…") → `recurring.md`.
+     Exact date unknown → write `?` for it; the brief asks once it matters.
    - Idea for later, no due date ("someday I'd like…") → `ideas.md` under
      the matching heading: `- idea in one line (added YYYY-MM-DD)`, with the
      user's details indented beneath it. Keep their wording.
    - Something finished → change its `[ ]` to `[x]` and append
      `— done YYYY-MM-DD`. Leave it in place; the weekly review archives it.
-   - Can't tell → `inbox.md` as `- YYYY-MM-DD: <what the user said>`.
+   - Can't tell → `now.md` **Unsorted** (rule 6), in the user's words with
+     the date added; the next brief asks about it.
    - **Also, people:** a new colleague or contact with a role → add or update
      their line in `people.md`. Never confidential people.
 4. If the same item already exists, update that line instead of adding a new

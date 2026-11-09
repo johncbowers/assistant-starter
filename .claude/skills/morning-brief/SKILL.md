@@ -22,13 +22,15 @@ user's input goes under **Needs a decision**.
 2. **Read** `now.md`, `events.md` and `recurring.md`.
    - **Events:** today's go at the top of **Today**, one line each with
      times. Point out a clash with a deadline, or a packed day this week.
-   - **Recurring:** work out each obligation's next date. Due within 5
-     working days → **This week** (or **Today**). If one depends on a date
+   - **Recurring:** work out each obligation's next date and, from its lead
+     time, the date to start. Start date or due date within 5 working days
+     → **This week** (or **Today**), saying which ("start today: quarterly
+     report, due 11-20"). If one depends on a date
      marked `?` that could fall in the next 8 weeks, ask for it under
      **Needs a decision**.
 3. **The user's own skills** (CLAUDE.md **More procedures**): for each,
    follow its **What's due** section against its tracker. Collect steps that
-   are overdue, due today, or due in the next 3 working days, and anything
+   are overdue, due today, or due in the next 5 working days, and anything
    missing. They go under a heading named for the skill.
 4. **Move** items in `now.md` between **Due this week** and **Coming up** so
    the sections are accurate for today.
@@ -41,7 +43,8 @@ user's input goes under **Needs a decision**.
    (today's events, with times; then overdue, with how many days; then due today)
 
    ## <Skill name>
-   (one section per skill with something due, one line per action)
+   (one section per skill with something due, one line per action, with its
+    date; these aren't repeated under This week)
 
    ## This week
    (due in the next 5 working days)
